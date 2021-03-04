@@ -166,8 +166,8 @@ src
 ### Server (Back End)
 
 #### ERD Model
+![ERD Model](./assets/erdModel.png)
 
-> Use this section to display an image of a computer generated ERD model. You can use draw.io, Lucidchart or another ERD tool.
 
 <br>
 
@@ -175,7 +175,8 @@ src
 
 ## Post-MVP
 
-> Use this section to document ideas you've had that would be fun (or necessary) for your Post-MVP. This will be helpful when you return to your project after graduation!
+- Users would be able to add series/movies.
+- Users would be able to create a "watch list" where they store series/movies they would like to watch
 
 ***
 
