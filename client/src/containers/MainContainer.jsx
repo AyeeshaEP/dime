@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { getAllSeries } from '../services/series';
 import { getAllComments } from '../services/comments';
-import Series from '../screens/Series';
+import Series from '../screens/Series.';
 import Comments from '../screens/Comments';
 
 export default function MainContainer(props) {
