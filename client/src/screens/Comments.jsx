@@ -1,36 +1,25 @@
-import { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-export default function FoodCreate(props) {
-  const [formData, setFormData] = useState({
-    name: ''
-  });
-  const { name } = formData;
-  const { handleCreate } = props;
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }))
-  }
+export default function Foods(props) {
+  const { comments, handleDelete, currentUser } = props;
 
   return (
-    <form onSubmit={(e)=>{
-      e.preventDefault();
-      handleCreate(formData);
-    }}>
-      <h3>Create Food</h3>
-      <label>Name:
-        <input
-          type='text'
-          name='name'
-          value={name}
-          onChange={handleChange}
-        />
-      </label>
+    <div>
+      <h3>Comments</h3>
+      {comments.map((comment) => (
+        <React.Fragment key={comment.id}>
+          <Link to={`/comments/${comment.id}`}><p>{comment.name}</p></Link>
+          { comment.user_id === currentUser?.id &&
+            <>
+              <Link to={`/comments/${comment.id}/edit`}><button>edit</button></Link>
+              <button onClick={() => handleDelete(comment.id)}>delete</button>
+            </>
+          }
+        </React.Fragment>
+      ))}
       <br />
-      <button>Submit</button>
-    </form>
+      <Link to='/foods/new'><button>Create</button></Link>
+    </div>
   )
 }
