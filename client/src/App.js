@@ -6,7 +6,8 @@ import Layout from './layouts/Layout';
 import Login from './screens/Login';
 import { loginUser, registerUser, verifyUser, removeToken } from './services/auth';
 import Register from './screens/Register';
-import MainContainer from './containers/MainContainer';
+import MainContainer from './containers/MainContainer'; 
+import Home from './screens/Home';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -50,7 +51,8 @@ function App() {
       <Route path='/register'>
       <Register handleRegister={handleRegister} />
       </Route>
-      <Route path='/'>
+        <Route path='/'>
+        <Home />
       <MainContainer currentUser={currentUser}/>
       </Route>
       </Switch>

@@ -6,7 +6,7 @@ export default function Series(props) {
   return (
     <div>
       <h3>Series</h3>
-      {seriess.map((series) => (
+      {series.map((series) => (
         <p key={series.id}>{series.name}</p>
       ))}
     </div>

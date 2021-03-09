@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useHistory, Redirect } from 'react-router-dom';
 import { getAllSeries } from '../services/series';
-import { getAllComments } from '../services/comments';
-import Series from '../screens/Series.';
+import { getAllComments, postComment, putComment, destroyComment } from '../services/comments';
+import Series from '../screens/Series';
 import Comments from '../screens/Comments';
+import CommentsCreate from '../screens/CommentsCreate';
+
 
 export default function MainContainer(props) {
   const [comments, setComments] = useState([]);
@@ -14,7 +16,7 @@ export default function MainContainer(props) {
   useEffect(() => {
     const fetchComments = async () => {
       const commentsList = await getAllComments();
-      setComments(seriesComments);
+      setComments(commentsList);
     }
     fetchComments();
   }, [])
@@ -24,23 +26,23 @@ export default function MainContainer(props) {
       const seriesList = await getAllSeries();
       setSeries(seriesList);
     }
-    fetchComments();
+    fetchSeries();
   }, [])
   const handleCreate = async (formData) => {
     const newComment = await postComment(formData);
-    setComment(prevState => [...prevState, newComment]);
+    setComments(prevState => [...prevState, newComment]);
     history.push('/comments');
   }
 
   const handleDelete = async (id) => {
     await destroyComment(id);
-    setComment(prevState => prevState.filter((comment) => comment.id !== id))
+    setComments(prevState => prevState.filter((comment) => comment.id !== id))
   }
 
   const handleUpdate = async (id, formData) => {
     const updatedComment = await putComment(id, formData);
-    setComment(prevState => prevState.map((comment) => {
-      return comment.id === Number(id) ? updatedCooment : comment
+    setComments(prevState => prevState.map((comment) => {
+      return comment.id === Number(id) ? updatedComment : comment
     }));
     history.push('/comments');
   }
@@ -51,28 +53,28 @@ export default function MainContainer(props) {
         !currentUser &&
         <Redirect to='/' />
       }
-      <Route path='/comments/new'>
-        <CommentCreate handleCreate={handleCreate} />
+      {/* <Route path='/comments/new'>
+        <CommentsCreate handleCreate={handleCreate} />
       </Route>
       <Route path='/comments/:id/edit'>
         <CommentEdit
           comments={comments}
           handleUpdate={handleUpdate}
-        />
-      </Route>
-      <Route path='/comments/:id'>
+        /> */}
+      {/* </Route> */}
+      {/* <Route path='/comments/:id'>
         <CommentDetail comments={comments} />
-      </Route>
-      <Route path='/comments'>
-        <Foods
-          commentss={comments}
+      </Route> */}
+      <Route path='/series'>
+        <Series
+          series={series}
           currentUser={currentUser}
           handleDelete={handleDelete}
         />
       </Route>
       <Route path='/comments'>
-        <Flavors
-          flavors={comments}
+        <Comments
+          comments={comments}
         />
       </Route>
     </Switch>

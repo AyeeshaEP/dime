@@ -1,0 +1,10 @@
+Footer {
+ 
+    background-image: linear-gradient(0deg, rgba(170, 169, 173, 1) 20%, rgba(197, 196, 200, 1) 40%, rgba(225, 224, 228, 1) 60%, rgba(254, 253, 255, 1) 80%, rgba(255, 255, 255, 1) 100%);
+
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  text-align: center;
+}
