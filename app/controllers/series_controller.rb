@@ -10,7 +10,7 @@ class SeriesController < ApplicationController
 
   # GET /series/1
   def show
-    render json: @series
+    render json: @series, include: :comments
   end
 
   # POST /series
