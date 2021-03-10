@@ -2,13 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import './Header.css';
 import './Footer.css';
+import logo from "../assets/logo.png";
 
 export default function Layout(props) {
   const { currentUser, handleLogout } = props;
   return (
     <div className="App">
       <header>
-      <img src="../../assets/logo.png" alt="logo" />
+        <img src={logo} alt="logo" />
         {
           currentUser ?
             <>
@@ -16,10 +17,10 @@ export default function Layout(props) {
               <button onClick={handleLogout}>Logout</button>
             </>
             :
-            <>
+            <div className="login">
             <Link to='/login'>Login</Link>
               <Link to='/register'>Sign Up</Link>
-              </>
+              </div>
         }
       </header>
       {props.children}
