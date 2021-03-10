@@ -12,10 +12,12 @@ import Comments from "../screens/Comments";
 import Home from "../screens/Home";
 import SeriesSelect from "../screens/SeriesSelect";
 import CommentsCreate from "../screens/CommentsCreate";
+import CommentsUpdate from "../screens/CommentsUpdate";
 
 export default function MainContainer(props) {
   const [comments, setComments] = useState([]);
   const [series, setSeries] = useState([]);
+  const [seriesOneId, setSeriesOneId] = useState(null);
   const { currentUser } = props;
   const history = useHistory();
 
@@ -34,10 +36,13 @@ export default function MainContainer(props) {
     };
     fetchSeries();
   }, []);
-  const handleCreate = async (formData) => {
+
+  const handleCreate = async (formData, seriesId) => {
+    formData.series_id = seriesId;
+    formData.user_id = currentUser.id;
     const newComment = await postComment(formData);
     setComments((prevState) => [...prevState, newComment]);
-    history.push("/comments");
+    history.push(`/series-select/${seriesId}`);
   };
 
   const handleDelete = async (id) => {
@@ -48,13 +53,15 @@ export default function MainContainer(props) {
   };
 
   const handleUpdate = async (id, formData) => {
+    formData.series_id = seriesOneId;
+    formData.user_id = currentUser.id;
     const updatedComment = await putComment(id, formData);
     setComments((prevState) =>
       prevState.map((comment) => {
         return comment.id === Number(id) ? updatedComment : comment;
       })
     );
-    history.push("/comments");
+    history.push(`/series-select/${seriesOneId}`);
   };
 
   const getPlatform = (platform) => {
@@ -94,8 +101,14 @@ export default function MainContainer(props) {
         <Comments comments={comments} />
       </Route>
       <Route path="/series-select/:id">
-       <SeriesSelect />
-       </Route>
+        <SeriesSelect setSeriesOneId={setSeriesOneId}/>
+      </Route>
+      <Route path="/create-comment/:id">
+        <CommentsCreate handleCreate={handleCreate} />
+      </Route>
+      <Route path={`/edit-comment/:id`}>
+        <CommentsUpdate handleUpdate={handleUpdate} comments={comments} />
+      </Route>
       <Route path="/">
         <Home series={series} getPlatform={getPlatform} />
       </Route>

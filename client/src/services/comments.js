@@ -16,7 +16,7 @@ export const postComment = async (commentData) => {
 }
 
 export const putComment = async (id, commentData) => {
-  const resp = await api.put(`/coments/${id}`, { comment: commentData });
+  const resp = await api.put(`/comments/${id}`, { comment: commentData });
   return resp.data;
 }
 

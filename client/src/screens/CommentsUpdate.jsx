@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 export default function CommentCreate(props) {
@@ -7,8 +7,18 @@ export default function CommentCreate(props) {
     rating: 0,
   });
   const { content, rating } = formData;
-  const { handleCreate } = props;
+  const { handleUpdate, comments } = props;
   const { id } = useParams();
+  
+  useEffect(() => {
+    const comment = comments.find((comment) => {
+     return comment.id === Number(id)
+   })
+    setFormData({
+      content: comment.content,
+      rating: comment.rating,
+    });
+  },[])
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,11 +29,11 @@ export default function CommentCreate(props) {
   }
 
   return (
-    <form onSubmit={(e)=>{
+    <form onSubmit={(e) => {
       e.preventDefault();
-      handleCreate(formData, id);
+      handleUpdate(id, formData);
     }}>
-      <h3>Create Comment</h3>
+      <h3>Update Comment</h3>
       <label>Content:
         <input
           type='text'

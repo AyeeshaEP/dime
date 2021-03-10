@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getOneSeries } from "../services/series";
 
-export default function SeriesSelect() {
+export default function SeriesSelect({setSeriesOneId}) {
   const [currentSeries, setCurrentSeries] = useState(null);
   const { id } = useParams();
 
@@ -10,6 +10,7 @@ export default function SeriesSelect() {
     const fetchSeries = async () => {
       const seriesData = await getOneSeries(id);
       setCurrentSeries(seriesData);
+      setSeriesOneId(seriesData.id);
     };
     fetchSeries();
   }, []);
@@ -20,7 +21,7 @@ export default function SeriesSelect() {
       {currentSeries?.comments.map((comment) => (
         <div>
           <p>{comment.content}</p>
-          <p>{comment.user_name}</p>
+          <p>{comment.user}</p>
           <Link to = {`/edit-comment/${comment.id}`}>
           <button>edit</button>
           </Link>
