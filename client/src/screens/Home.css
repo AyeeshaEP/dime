@@ -76,3 +76,16 @@ margin: 20px
   background-position: center;
   margin: 20px
 }
+
+@media screen and (max-width: 650px) {
+  .Platforms1 {
+    display: flex;
+    flex-direction: column;
+  }
+  .Platforms2 {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+}

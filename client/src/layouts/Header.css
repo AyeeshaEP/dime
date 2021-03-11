@@ -33,3 +33,10 @@ header img {
     0 0 50px #666666, 0 0 60px #666666, 0 0 70px #999999, 0 0 80px #999999;
  
   }
+
+  @media screen and (max-width: 650px) {
+    header {
+      display: flex;
+      flex-direction: column;
+    }
+  }
