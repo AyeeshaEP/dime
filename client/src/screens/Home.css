@@ -24,6 +24,7 @@ text-align: center;
 
 .Netflix {
 background-image: url("https://torranceca.files.wordpress.com/2019/10/netflix.jpg");
+box-shadow: 0 0 15px white;
 height: 200px;
 width: 300px;
 background-size: cover;
@@ -31,6 +32,7 @@ margin: 20px
 }
 .Hulu {
 background-image: url("https://i2.wp.com/www.thestreamingblog.com/wp-content/uploads/2018/04/hulu-new-banner.jpg?fit=1106%2C575&ssl=1");
+box-shadow: 0 0 15px white;
 height: 200px;
 width: 300px;
 background-size: cover;
@@ -38,6 +40,7 @@ margin: 20px 20px 20px 20px;
 }
 .HBOMax {
 background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6O0YcVPAOD-I2KCO73RWJa5j6hYx5FthM9A&usqp=CAU");
+box-shadow: 0 0 15px white;
 height: 200px;
 width: 300px;
 background-size: cover;
@@ -46,6 +49,7 @@ margin: 20px
 
 .Prime {
  background-image: url("https://i.ytimg.com/vi/Tdv4WarY8z4/maxresdefault.jpg");
+ box-shadow: 0 0 15px white;
  height: 200px;
  width: 300px;
  background-size: cover;
@@ -55,6 +59,7 @@ margin: 20px
 
 .Disney {
   background-image: url("https://d107a8nc3g2c4h.cloudfront.net/images/blog/wp-content/uploads/banner-disney.jpg");
+  box-shadow: 0 0 15px white;
   height: 200px;
   width: 300px;
   background-size: cover;
@@ -64,6 +69,7 @@ margin: 20px
 
 .Starz {
   background-image: url("data:image/png;base64,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");
+  box-shadow: 0 0 15px white;
   height: 200px;
   width: 300px;
   background-size: cover;

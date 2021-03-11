@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getOneSeries } from "../services/series";
 
-export default function SeriesSelect({setSeriesOneId}) {
+export default function SeriesSelect({ setSeriesOneId, handleDelete, refreshComments }) {
   const [currentSeries, setCurrentSeries] = useState(null);
   const { id } = useParams();
 
@@ -13,7 +13,7 @@ export default function SeriesSelect({setSeriesOneId}) {
       setSeriesOneId(seriesData.id);
     };
     fetchSeries();
-  }, []);
+  }, [refreshComments]);
 
   return (
     <div>
@@ -25,7 +25,7 @@ export default function SeriesSelect({setSeriesOneId}) {
           <Link to = {`/edit-comment/${comment.id}`}>
           <button>edit</button>
           </Link>
-          <button>delete</button>
+          <button onClick={() => handleDelete(comment.id)}>delete</button>
         </div>
       ))}
       <Link to = {`/create-comment/${id}`}>

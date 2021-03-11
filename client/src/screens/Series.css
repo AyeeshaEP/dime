@@ -2,7 +2,19 @@ p {
 text-align: center;
 text-decoration: none;
 }
-h2 {
+h1 {
   text-align: center;
 }
 
+div {
+text-align: center;
+}
+
+
+img {
+  height: 400px;
+  width: 800px;
+  background-size: cover;
+  margin: 20px;
+  box-shadow: 0 0 15px white;
+}

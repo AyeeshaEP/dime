@@ -18,14 +18,15 @@ export default function Layout(props) {
             </>
             :
             <div className="login">
-            <Link to='/login'>Login</Link>
-              <Link to='/register'>Sign Up</Link>
+              <Link className="loginLink" to='/login'>Login</Link>
+              
+              <Link className="loginLink" to='/register'>Sign Up</Link>
               </div>
         }
       </header>
       {props.children}
       <footer>
-        <h1>GitHub</h1>
+        <h3>By: Ayeesha Ellis</h3>
       </footer>
     </div>
   )

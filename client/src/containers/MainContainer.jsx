@@ -18,6 +18,7 @@ export default function MainContainer(props) {
   const [comments, setComments] = useState([]);
   const [series, setSeries] = useState([]);
   const [seriesOneId, setSeriesOneId] = useState(null);
+  const [refreshComments, setRefreshComments] = useState(false);
   const { currentUser } = props;
   const history = useHistory();
 
@@ -50,6 +51,7 @@ export default function MainContainer(props) {
     setComments((prevState) =>
       prevState.filter((comment) => comment.id !== id)
     );
+    setRefreshComments(prev => !prev)
   };
 
   const handleUpdate = async (id, formData) => {
@@ -66,8 +68,8 @@ export default function MainContainer(props) {
 
   const getPlatform = (platform) => {
     if (platform) {
-      return series.filter((series) => {
-        return series.platform.toLowerCase() === platform.toLowerCase();
+      return series.filter((serie) => {
+        return serie.platform.toLowerCase() === platform.toLowerCase();
       });
     } else {
       return series;
@@ -94,14 +96,13 @@ export default function MainContainer(props) {
           series={series}
           getPlatform={getPlatform}
           currentUser={currentUser}
-          handleDelete={handleDelete}
         />
       </Route>
       <Route path="/comments">
         <Comments comments={comments} />
       </Route>
       <Route path="/series-select/:id">
-        <SeriesSelect setSeriesOneId={setSeriesOneId}/>
+        <SeriesSelect setSeriesOneId={setSeriesOneId} handleDelete={handleDelete} refreshComments={refreshComments}/>
       </Route>
       <Route path="/create-comment/:id">
         <CommentsCreate handleCreate={handleCreate} />

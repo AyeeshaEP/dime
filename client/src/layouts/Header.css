@@ -1,19 +1,35 @@
 header {
   background-image: linear-gradient(0deg, rgba(170, 169, 173, 1) 20%, rgba(197, 196, 200, 1) 40%, rgba(225, 224, 228, 1) 60%, rgba(254, 253, 255, 1) 80%, rgba(255, 255, 255, 1) 100%);
-  padding: 20px;
+  padding: 20px; 
+  width: 100vw;
+  height: 35px;
   text-align: center;
 }
 
 header img {
-  float: left;
-  width: 50px;
-  height: 50px;
-}
+  position: absolute;
+  left: 5px;
+  top: 10px;
+  object-fit: contain;
+  height: 60px;
+  width: 60px;
+  margin: 0;
+  }
+
 
 .login {
   display: flex;
-  align-items: space-between;
-  text-decoration: none;
- 
+  justify-content: right;
+  position: absolute;
+  right: 0;
+  top: 12px;
+  align-items: center;
+  flex-direction: row;
+  }
 
-}
+  .loginLink {
+ margin-right: 30px;
+ text-shadow: 0 0 5px #000000, 0 0 20px #000000, 0 0 30px #333333, 0 0 40px #333333,
+    0 0 50px #666666, 0 0 60px #666666, 0 0 70px #999999, 0 0 80px #999999;
+ 
+  }

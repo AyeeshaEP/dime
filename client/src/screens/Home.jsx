@@ -1,7 +1,6 @@
 import "./Login.css";
 import "./Home.css";
 import { Link } from "react-router-dom";
-import Layout from "../layouts/Layout";
 
 //create a function to invoke getPlaform
 //make api call to get allseries
@@ -9,44 +8,33 @@ import Layout from "../layouts/Layout";
 //include history.push('/series/:name') to redirect to series page
 //look at getall foods or flavors
 
-
-
-
-
-
-
 export default function Home(props) {
-
   return (
-    <Layout >
     <div className="App">
       <h1>Browse by:</h1>
-      
-        <div className="Platforms1">
-     
-        <Link to ="/series/netflix">
+
+      <div className="Platforms1">
+        <Link to="/series/netflix">
           <div className="Netflix"></div>
         </Link>
-        <Link to ="/series/hulu">
+        <Link to="/series/hulu">
           <div className="Hulu"></div>
         </Link>
-        <Link to ="/series/hbomax">
+        <Link to="/series/hbomax">
           <div className="HBOMax"></div>
-          </Link>
-          
+        </Link>
       </div>
       <div className="Platforms2">
-        <Link to ="/series/prime">
+        <Link to="/series/prime">
           <div className="Prime"></div>
         </Link>
-        <Link to ="/series/disney">
+        <Link to="/series/disney+">
           <div className="Disney"></div>
         </Link>
-        <Link to ="/series/starz">
+        <Link to="/series/starz">
           <div className="Starz"></div>
-          </Link>
+        </Link>
       </div>
-      </div>
-      </Layout>
+    </div>
   );
 }

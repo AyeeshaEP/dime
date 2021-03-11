@@ -5,4 +5,14 @@ body {
       #89858B, #134762
     );
 }
+a {
+  text-decoration: none;
+  color: aqua;
+
+}
+
+a.grow :hover {
+  transition: all .2s ease-in-out; 
+}
+
 
